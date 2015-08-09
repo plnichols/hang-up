@@ -7,9 +7,12 @@
 
     function jobsService($http, $log, $q) {
         return {
-            getJobs: getJobs
+            getJobs: getJobs,
+            getJob: getJob
         }
 
+
+        // get all jobs
         function getJobs() {
             return $http.get('mocks/jobs.json')
                         .then(sendJobsData)
@@ -22,6 +25,30 @@
 
         function sendJobsError(response) {
             return $q.reject('Error retrieving jobs (HTTP status: ' + response.status + ')');
+        }
+
+
+        // get a single job by ID
+        function getJob(job_id) {
+            return $http.get('mocks/jobs.json', {
+                            params: {id: job_id}
+                        })
+                        .then(sendJobData)
+                        .catch(sendJobError);
+        }
+
+        function sendJobData(response) {
+            var job;
+            response.data.forEach(function(element){
+                if(response.config.params.id == element.id) {
+                    job = element;
+                }
+            });
+            return job;
+        }
+
+        function sendJobError(response) {
+            return $q.reject('Error retrieving job (' +  + '(HTTP status: (' + response.status + ')');
         }
     }
 

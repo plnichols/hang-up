@@ -26,6 +26,12 @@
                 controller: 'mainCtrl',
                 controllerAs: 'main'
             })
+            .state('main.editjob', {
+                url: 'edit/:job_id',
+                templateUrl: 'components/editJob/editJob.html',
+                controller: 'editJobCtrl',
+                controllerAs: 'editjob'
+            })
             .state('addjob', {
                 url: '/addjob',
                 templateUrl: 'components/addJob/addJob.html',

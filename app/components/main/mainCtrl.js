@@ -13,7 +13,7 @@
         activate();
 
 
-        ////////////////////
+        ///////////////////////////
 
 
         function activate() {
@@ -22,9 +22,9 @@
                         .catch(getJobsError);
         }
 
-        function getJobsSuccess(response) {
+        function getJobsSuccess(data) {
             $log.debug('[mainCtrl] Success: getJobsSuccess');
-            vm.jobs = response;
+            vm.jobs = data;
         }
 
         function getJobsError(reason) {
