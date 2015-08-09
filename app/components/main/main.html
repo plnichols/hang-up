@@ -1,0 +1,18 @@
+<div class="row">
+    <div class="col-xs-12">
+        <h1>{{main.title}}</h1>
+        <h5>Here's a list of recent job/contract details</h5>
+        <hr>
+    </div>
+</div>
+
+<div class="row">
+    <div ng-repeat="job in main.jobs" class="col-sm-4 col-md-3">
+        <div class="well well-sm">
+            <h4>{{job.name}}</h4>
+            <hr>
+            <p>{{job.desc}}</p>
+            <p>{{job.company}}</p>
+        </div>
+    </div>
+</div>
