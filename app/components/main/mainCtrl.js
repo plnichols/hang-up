@@ -3,32 +3,44 @@
     'use strict';
 
     angular.module('app')
-        .controller('mainCtrl', ['$log', 'jobsService', mainCtrl]);
+        .controller('mainCtrl', ['$scope', '$log', 'notesService', 'CONSTANT', '$state', mainCtrl]);
 
-    function mainCtrl($log, jobsService) {
+    function mainCtrl($scope, $log, notesService, CONSTANT, $state) {
         var vm = this;
-        vm.title = 'Job Notes';
-        vm.jobs = {};
 
+        vm.title = 'Notes';
+        vm.notes = {};
+        vm.state = $state;
+
+        vm.edit = function(note) {
+            console.log(note);
+        };
+
+        // get list of notes
         activate();
+
+        // refresh list after note has been added
+        $scope.$on('noteAdded', function(event, data) {
+            activate();
+        });
 
 
         ///////////////////////////
 
 
         function activate() {
-            return jobsService.getJobs()
-                        .then(getJobsSuccess)
-                        .catch(getJobsError);
+            return notesService.getNotes()
+                                .then(getNotesSuccess)
+                                .catch(getNotesError);
         }
 
-        function getJobsSuccess(data) {
-            $log.debug('[mainCtrl] Success: getJobsSuccess');
-            vm.jobs = data;
+        function getNotesSuccess(data) {
+            $log.debug('[mainCtrl] Success: getNotesSuccess');
+            vm.notes = data;
         }
 
-        function getJobsError(reason) {
-            $log.debug('[mainCtrl] Error: getJobsError --> ' + reason);
+        function getNotesError(reason) {
+            $log.debug('[mainCtrl] Error: getNotesError --> ' + reason);
         }
     }
 

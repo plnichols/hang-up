@@ -1,16 +1,19 @@
 <div class="well">
+    <h3>{{edit.title}}</h3>
+    <h5>{{edit.subtitle}}</h5>
+    <hr>
     <form>
         <div class="form-group">
             <label for="jobName">Name</label>
-            <input type="text" class="form-control" ng-model="editjob.job.name" id="jobName">
+            <input type="text" class="form-control" ng-model="edit.note.name" id="noteName">
         </div>
         <div class="form-group">
             <label for="jobDesc">Description</label>
-            <input type="text" class="form-control" ng-model="editjob.job.desc" id="jobDesc">
+            <input type="text" class="form-control" ng-model="edit.note.desc" id="noteDesc">
         </div>
         <div class="form-group">
             <label for="jobCompany">Company</label>
-            <input type="text" class="form-control" ng-model="editjob.job.company" id="jobCompany">
+            <input type="text" class="form-control" ng-model="edit.note.company" id="noteCompany">
         </div>
         <div class="form-group">
             <button class="btn btn-success">Save changes</button>

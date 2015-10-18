@@ -11,6 +11,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="bower_components/bootstrap-css-only/css/bootstrap.min.css">
   <link rel="stylesheet" href="css/app.css">
+  <script src="https://cdn.firebase.com/js/client/2.2.9/firebase.js"></script>
 </head>
 <body>
 
@@ -20,14 +21,14 @@
 
     <div class="container-fluid">
 
-        <nav class="navbar navbar-default">
-            <ul class="nav navbar-nav">
-                <li><a ui-sref="main">main</a></li>
-                <li><a ui-sref="addjob">add job</a></li>
-            </ul>
-        </nav>
+      <nav class="navbar navbar-default">
+        <ul class="nav navbar-nav">
+          <li><a ui-sref="main">main</a></li>
+          <li><a ui-sref="main.add">add job</a></li>
+        </ul>
+      </nav>
 
-        <div ui-view></div>
+      <div ui-view></div>
 
     </div>
 
@@ -38,8 +39,8 @@
     <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="app.js"></script>
     <script src="components/main/mainCtrl.js"></script>
-    <script src="components/addJob/addJobCtrl.js"></script>
-    <script src="components/editJob/editJobCtrl.js"></script>
-    <script src="common/services/jobsService.js"></script>
+    <script src="components/add/addCtrl.js"></script>
+    <script src="components/edit/editCtrl.js"></script>
+    <script src="common/services/notesService.js"></script>
 </body>
 </html>

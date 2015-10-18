@@ -3,20 +3,13 @@
     'use strict';
 
     // Declare app level module
-    var app = angular.module('app', ['ui.router']);
+    angular.module('app', [
+        'ui.router'
+    ])
 
 
     // Define routing
-    app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
-        // $routeProvider
-        //     .when('/',{
-        //         templateUrl: 'main/main.html',
-        //         controller: 'mainCtrl',
-        //         controllerAs: 'main'
-        //     })
-        //     .otherwise({redirectTo: '/'});
-
-        // For any unmatched url, redirect to /state1
+    .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
         $urlRouterProvider.otherwise("/");
 
         $stateProvider
@@ -26,19 +19,28 @@
                 controller: 'mainCtrl',
                 controllerAs: 'main'
             })
-            .state('main.editjob', {
-                url: 'edit/:job_id',
-                templateUrl: 'components/editJob/editJob.html',
-                controller: 'editJobCtrl',
-                controllerAs: 'editjob'
+            .state('main.edit', {
+                url: 'edit/:id',
+                templateUrl: 'components/edit/edit.html',
+                controller: 'editCtrl',
+                controllerAs: 'edit'
             })
-            .state('addjob', {
-                url: '/addjob',
-                templateUrl: 'components/addJob/addJob.html',
-                controller: 'addJobCtrl',
-                controllerAs: 'addjob'
+            .state('main.add', {
+                url: 'add/',
+                templateUrl: 'components/add/add.html',
+                controller: 'addCtrl',
+                controllerAs: 'add'
             })
-    }]);
+    }])
+
+    // Define config and constant
+    .constant('CONSTANT', {
+        config: {
+            firebase: {
+                url: "https://INSERT-YOUR-ACCOUNT-DOMAIN.firebaseio.com/"
+            }
+        }
+    })
 
 })();
 
