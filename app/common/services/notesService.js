@@ -3,92 +3,74 @@
     'use strict';
 
     angular.module('app')
-        .factory('notesService', ['$http', '$log', '$q', 'CONSTANT', notesService]);
+        .factory('notesService', ['$log', 'localStorageService', notesService]);
 
-    function notesService($http, $log, $q, CONSTANT) {
+    function notesService($log, localStorageService) {
         return {
             addNote: addNote,
-            getNotes: getNotes,
+            editNote: editNote,
             getNote: getNote,
-            deleteNote: deleteNote
+            deleteNote: deleteNote,
+            getAllNotes: getAllNotes
         }
 
 
-        // add note
         function addNote(payload) {
-            var firebaseNotes = new Firebase(CONSTANT.config.firebase.url + "/notes");
-            var deferred = $q.defer();
+            var data = localStorageService.get('notes') || [];
 
-            firebaseNotes.push(payload, function addNoteCallback(error) {
-                if (error) {
-                    deferred.reject(error);
-                    $log.info('Error creating new note (' + error + ')');
-                } else {
-                    deferred.resolve(payload);
-                }
+            payload.timestamp = new Date().getTime();
+            data.push(payload);
+            localStorageService.set('notes', data);
+
+            return payload;
+        }
+
+
+        function editNote(payload, timestamp) {
+            var data = localStorageService.get('notes') || [],
+                noteIndex = getNoteIndex(timestamp);
+
+            data[noteIndex] = payload;
+            localStorageService.set('notes', data);
+
+            return payload;
+        }
+
+
+        function deleteNote(timestamp) {
+            var data = localStorageService.get('notes') || [],
+                noteIndex = getNoteIndex(timestamp),
+                deleted = data.splice(noteIndex, 1);
+                
+            localStorageService.set('notes', data);
+
+            return deleted;
+        }
+
+
+        function getAllNotes() {
+            return localStorageService.get('notes') || [];
+        }
+
+
+        function getNote(timestamp) {
+            var note = _.find(localStorageService.get('notes'), function(n) {
+                return n.timestamp == timestamp;
             });
 
-            return deferred.promise;
-        }
-
-
-
-        // delete a note
-        function deleteNote() {
-            var firebaseNotes = new Firebase(CONSTANT.config.firebase.url + "/notes");
-            var deferred = $q.defer();
-
-            // Attach an asynchronous callback to read the data at our posts reference
-            // firebaseNotes.on("value", function(snapshot) {
-            //     deferred.resolve(snapshot.val());
-            // }, function (error) {
-            //     deferred.reject('Error retrieving notes (' + error + ')');
-            // });
-
-            return deferred.promise;
-        }
-
-
-
-        // get all notes
-        function getNotes() {
-            var firebaseNotes = new Firebase(CONSTANT.config.firebase.url + "/notes");
-            var deferred = $q.defer();
-
-            // Attach an asynchronous callback to read the data at our posts reference
-            firebaseNotes.on("value", function(snapshot) {
-                deferred.resolve(snapshot.val());
-            }, function (error) {
-                deferred.reject('Error retrieving notes (' + error + ')');
-            });
-
-            return deferred.promise;
-        }
-
-
-
-        // get a single note by ID
-        function getNote(note_id) {
-            return $http.get('mocks/notes.json', {
-                            params: {id: note_id}
-                        })
-                        .then(sendNoteData)
-                        .catch(sendNoteError);
-        }
-
-        function sendNoteData(response) {
-            var note;
-            response.data.forEach(function(element){
-                if(response.config.params.id == element.id) {
-                    note = element;
-                }
-            });
             return note;
         }
 
-        function sendNoteError(response) {
-            return $q.reject('Error retrieving note (' +  + '(HTTP status: (' + response.status + ')');
+
+        function getNoteIndex(timestamp) {
+            var index = _.findIndex(localStorageService.get('notes'), function(n) {
+                return n.timestamp == timestamp;
+            });
+
+            return index;
         }
+
     }
 
 })();
+

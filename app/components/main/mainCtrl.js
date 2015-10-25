@@ -3,25 +3,26 @@
     'use strict';
 
     angular.module('app')
-        .controller('mainCtrl', ['$scope', '$log', 'notesService', 'CONSTANT', '$state', mainCtrl]);
+        .controller('mainCtrl', ['$rootScope', '$log', 'notesService', mainCtrl]);
 
-    function mainCtrl($scope, $log, notesService, CONSTANT, $state) {
+    function mainCtrl($rootScope, $log, notesService) {
         var vm = this;
 
-        vm.title = 'Notes';
         vm.notes = {};
-        vm.state = $state;
 
-        vm.edit = function(note) {
-            console.log(note);
+        vm.delete = function(timestamp) {
+            var data = notesService.deleteNote(timestamp);
+
+            $log.debug('[mainCtrl] Success: Note deleted: ', data);
+            refreshList();
         };
 
         // get list of notes
         activate();
 
-        // refresh list after note has been added
-        $scope.$on('noteAdded', function(event, data) {
-            activate();
+        // refresh list after note has been added/edited
+        $rootScope.$on('notesUpdated', function(event) {
+            refreshList();
         });
 
 
@@ -29,18 +30,13 @@
 
 
         function activate() {
-            return notesService.getNotes()
-                                .then(getNotesSuccess)
-                                .catch(getNotesError);
+            vm.notes = notesService.getAllNotes();
         }
 
-        function getNotesSuccess(data) {
-            $log.debug('[mainCtrl] Success: getNotesSuccess');
-            vm.notes = data;
-        }
 
-        function getNotesError(reason) {
-            $log.debug('[mainCtrl] Error: getNotesError --> ' + reason);
+        function refreshList() {
+            vm.notes = notesService.getAllNotes();
+            $log.debug('[mainCtrl] Refresh list');
         }
     }
 

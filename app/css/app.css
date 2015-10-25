@@ -1,6 +1,10 @@
 /* app css stylesheet */
 
 body {
-  margin-top: 1em;
+	padding-top: 4em;
+}
+
+.nav > li {
+	float: left;
 }
 

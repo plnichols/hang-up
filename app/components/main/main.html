@@ -1,12 +1,12 @@
 <div class="row">
     <div class="col-xs-12">
-        <h1>{{main.title}}</h1>
+        <h1>Notes</h1>
         <hr>
     </div>
 </div>
 
 <div class="row">
-    <div class="col-xs-8">
+    <div class="col-xs-6 col-sm-8 col-md-9">
         <div class="row">
             <div ng-repeat="note in main.notes" class="col-sm-6 col-md-4">
                 <div class="well well-sm">
@@ -14,14 +14,15 @@
                     <hr>
                     <p>{{note.desc}}</p>
                     <p>{{note.company}}</p>
-                    <button class="btn btn-info btn-sm" ng-click="main.edit(main.notes)" Xui-sref="main.edit({id:note})">Edit</button>
-                    <button class="btn btn-danger btn-sm" ng-click="main.delete()">Delete</button>
+                    <p>{{note.timestamp | date:"dd MMM yyyy"}}</p>
+                    <button class="btn btn-info btn-xs" ng-click="main.edit(note.timestamp)" ui-sref="main.edit({id:note.timestamp})">Edit</button>
+                    <button class="btn btn-danger btn-xs" ng-click="main.delete(note.timestamp)">Delete</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="col-xs-4">
+    <div class="col-xs-6 col-sm-4 col-md-3">
         <div ui-view></div>
     </div>
 </div>

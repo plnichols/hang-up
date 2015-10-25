@@ -11,7 +11,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="bower_components/bootstrap-css-only/css/bootstrap.min.css">
   <link rel="stylesheet" href="css/app.css">
-  <script src="https://cdn.firebase.com/js/client/2.2.9/firebase.js"></script>
 </head>
 <body>
 
@@ -21,11 +20,13 @@
 
     <div class="container-fluid">
 
-      <nav class="navbar navbar-default">
-        <ul class="nav navbar-nav">
-          <li><a ui-sref="main">main</a></li>
-          <li><a ui-sref="main.add">add job</a></li>
-        </ul>
+      <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+          <ul class="nav navbar-nav">
+            <li><a ui-sref="main">main</a></li>
+            <li><a ui-sref="main.add">add job</a></li>
+          </ul>
+        </div>
       </nav>
 
       <div ui-view></div>
@@ -35,7 +36,9 @@
     <!-- In production use:
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
     -->
+    <script src="bower_components/lodash/lodash.min.js"></script>
     <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-local-storage/dist/angular-local-storage.min.js"></script>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="app.js"></script>
     <script src="components/main/mainCtrl.js"></script>

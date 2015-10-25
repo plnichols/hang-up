@@ -3,14 +3,13 @@
     'use strict';
 
     angular.module('app')
-        .controller('editCtrl', ['$log', '$stateParams', 'notesService', editCtrl]);
+        .controller('editCtrl', ['$log', '$rootScope', '$stateParams', 'notesService', editCtrl]);
 
-    function editCtrl($log, $stateParams, notesService) {
+    function editCtrl($log, $rootScope, $stateParams, notesService) {
         var vm = this;
 
-        vm.title = 'Edit note';
-        vm.subtitle = 'Modify details of the selected note';
         vm.note = {};
+        vm.editNote = editNote;
 
         activate();
 
@@ -19,19 +18,17 @@
 
 
         function activate() {
-            console.log('edit: ' + $stateParams.id);
-            // return notesService.getNote($stateParams.id)
-            //             .then(getNoteSuccess)
-            //             .catch(getNoteError);
-        }
+            var data = notesService.getNote($stateParams.id);
 
-        function getNoteSuccess(data) {
-            $log.debug('[editCtrl] Success: getNoteSuccess');
             vm.note = data;
         }
 
-        function getNoteError(reason) {
-            $log.debug('[editCtrl] Error: getNoteError --> ' + reason);
+
+        function editNote(timestamp) {
+            var data = notesService.editNote(vm.note, timestamp);
+            
+            $log.debug('[editCtrl] Success: note edited');
+            $rootScope.$broadcast('notesUpdated', data);
         }
     }
 

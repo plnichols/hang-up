@@ -4,12 +4,13 @@
 
     // Declare app level module
     angular.module('app', [
-        'ui.router'
+        'ui.router',
+        'LocalStorageModule'
     ])
 
 
     // Define routing
-    .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
+    .config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
         $urlRouterProvider.otherwise("/");
 
         $stateProvider
@@ -33,14 +34,22 @@
             })
     }])
 
+    // Local storage settings
+    .config(['localStorageServiceProvider', function (localStorageServiceProvider) {
+        localStorageServiceProvider
+            .setStorageCookie(0, '/')
+            .setStorageCookieDomain('')
+            .setNotify(true, true);
+    }])
+
     // Define config and constant
-    .constant('CONSTANT', {
-        config: {
-            firebase: {
-                url: "https://INSERT-YOUR-ACCOUNT-DOMAIN.firebaseio.com/"
-            }
-        }
-    })
+    // .constant('CONSTANT', {
+    //     config: {
+    //         firebase: {
+    //             url: "https://INSERT-YOUR-ACCOUNT-DOMAIN.firebaseio.com/"
+    //         }
+    //     }
+    // })
 
 })();
 

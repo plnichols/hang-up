@@ -1,6 +1,6 @@
 <div class="well">
-    <h3>{{edit.title}}</h3>
-    <h5>{{edit.subtitle}}</h5>
+    <h3>Edit note</h3>
+    <h5>Modify details of selected note</h5>
     <hr>
     <form>
         <div class="form-group">
@@ -16,8 +16,8 @@
             <input type="text" class="form-control" ng-model="edit.note.company" id="noteCompany">
         </div>
         <div class="form-group">
-            <button class="btn btn-success">Save changes</button>
-            <button class="btn btn-default" ui-sref="main">Cancel</button>
+            <button class="btn btn-success btn-sm" ng-click="edit.editNote(edit.note.timestamp)">Save changes</button>
+            <button class="btn btn-default btn-sm" ui-sref="main">Cancel</button>
         </div>
     </form>
 </div>

@@ -3,13 +3,11 @@
     'use strict';
 
     angular.module('app')
-        .controller('addCtrl', ['notesService', '$log', '$rootScope', 'CONSTANT', addCtrl]);
+        .controller('addCtrl', ['$log', '$rootScope', 'notesService', addCtrl]);
 
-    function addCtrl(notesService, $log, $rootScope, CONSTANT) {
+    function addCtrl($log, $rootScope, notesService) {
         var vm = this;
 
-        vm.title = 'Add a note';
-        vm.subtitle = 'Details of the new job search note';
         vm.note = {};
         vm.addNote = addNote;
 
@@ -18,18 +16,10 @@
 
 
         function addNote() {
-            return notesService.addNote(vm.note)
-                                .then(addNoteSuccess)
-                                .catch(addNoteError);
-        }
-
-        function addNoteSuccess(data) {
-            $rootScope.$broadcast('noteAdded', data);
-            $log.debug('[addCtrl] Success: addNoteSuccess');
-        }
-
-        function addNoteError(reason) {
-            $log.debug('[addCtrl] Error: addNoteError --> ' + reason);
+            var data = notesService.addNote(vm.note);
+            
+            $log.debug('[addCtrl] Success: note added', data);
+            $rootScope.$broadcast('notesUpdated');
         }
     }
 
