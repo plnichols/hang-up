@@ -24,8 +24,8 @@
         }
 
 
-        function editNote(timestamp) {
-            var data = notesService.editNote(vm.note, timestamp);
+        function editNote(id) {
+            var data = notesService.editNote(vm.note, id);
             
             $log.debug('[editCtrl] Success: note edited');
             $rootScope.$broadcast('notesUpdated', data);

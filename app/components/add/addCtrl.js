@@ -20,6 +20,7 @@
             
             $log.debug('[addCtrl] Success: note added', data);
             $rootScope.$broadcast('notesUpdated');
+            vm.note = {};
         }
     }
 

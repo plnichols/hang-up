@@ -1,0 +1,13 @@
+body {
+	padding-top: 5em;
+}
+
+a {
+	color: #444;
+	text-decoration: underline;
+	transition: all 0.2s ease-in-out;
+	&:hover,
+	&:active {
+		color: #666;
+	}
+}

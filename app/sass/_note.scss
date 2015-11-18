@@ -1,0 +1,74 @@
+.note {}
+
+.note__inner {
+	position: relative;
+	padding-left: 60px;
+	min-height: 68px;
+
+	.glyphicon {
+		padding-right: 4px;
+		color: #666;
+	}
+}
+
+.note__company {
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.note__recruiter {
+	margin-bottom: 6px;
+}
+
+.note__email {
+	font-size: 12px;
+	margin-bottom: 3px;
+
+	.glyphicon {
+		top: 2px;
+	}
+}
+
+.note__phone {
+	font-size: 12px;
+	margin-bottom: 3px;
+
+	.glyphicon {
+		top: 1px;
+	}
+}
+
+.note__description {
+	font-size: 12px;
+	line-height: 1.2;
+	margin-bottom: 3px;
+
+	.glyphicon {
+		top: 2px;
+	}
+}
+
+.note__id {
+	position: absolute;
+	top: 0;
+	right: 0;
+	padding: 3px 5px;
+	font-size: 10px;
+	color: #ccc;
+	opacity: 0;
+	transition: all 0.2s ease-in-out;
+	.note:hover & {
+		opacity: 1;
+	}
+}
+
+.note__cta {
+	position: absolute;
+	bottom: -1px;
+	right: -1px;
+	opacity: 0;
+	transition: all 0.2s ease-in-out;
+	.note:hover & {
+		opacity: 1;
+	}
+}

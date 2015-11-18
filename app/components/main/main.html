@@ -1,28 +1,31 @@
 <div class="row">
-    <div class="col-xs-12">
-        <h1>Notes</h1>
-        <hr>
-    </div>
-</div>
+	<div class="container-fluid">
+		<div class="col-xs-6 col-sm-8 col-md-9">
+			<div class="row">
+				<div class="note" ng-repeat="note in main.notes" class="col-sm-12 col-md-6">
+					<div class="note__inner well well-sm">
+						<div class="date-label">
+							<span class="date-label__month">{{note.timestamp | date:"MMM"}}</span>
+							<span class="date-label__day">{{note.timestamp | date:"dd"}}</span>
+							<span class="date-label__year">{{note.timestamp | date:"yyyy"}}</span>
+						</div>
+						<div class="note__company" ng-if="note.company">{{note.company}}</div>
+						<div class="note__recruiter" ng-if="note.recruiter">{{note.recruiter}}</div>
+						<div class="note__email" ng-if="note.email"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> <a href="mailto:{{note.email}}">{{note.email}}</a></div>
+						<div class="note__phone" ng-if="note.phone"><span class="glyphicon glyphicon-phone" aria-hidden="true"></span> {{note.phone}}</div>
+						<div class="note__description" ng-if="note.description"> <span class="glyphicon glyphicon-tags" aria-hidden="true"></span> {{note.description}}</div>
+						<div class="note__id">{{note.id}}</div>
+						<div class="note__cta btn-group">
+							<button class="btn btn-default btn-sm" ng-click="main.edit(note.id)" ui-sref="main.edit({id:note.id})">Edit</button>
+							<button class="btn btn-danger btn-sm" ng-click="main.delete(note.id)">Delete</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 
-<div class="row">
-    <div class="col-xs-6 col-sm-8 col-md-9">
-        <div class="row">
-            <div ng-repeat="note in main.notes" class="col-sm-6 col-md-4">
-                <div class="well well-sm">
-                    <h4>{{note.name}}</h4>
-                    <hr>
-                    <p>{{note.desc}}</p>
-                    <p>{{note.company}}</p>
-                    <p>{{note.timestamp | date:"dd MMM yyyy"}}</p>
-                    <button class="btn btn-info btn-xs" ng-click="main.edit(note.timestamp)" ui-sref="main.edit({id:note.timestamp})">Edit</button>
-                    <button class="btn btn-danger btn-xs" ng-click="main.delete(note.timestamp)">Delete</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-xs-6 col-sm-4 col-md-3">
-        <div ui-view></div>
-    </div>
+		<div class="side-panel col-xs-6 col-sm-4 col-md-3">
+			<div ui-view></div>
+		</div>
+	</div>
 </div>
