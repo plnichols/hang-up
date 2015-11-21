@@ -9,9 +9,10 @@
     "angular": "~1.4.0",
     "angular-route": "~1.4.0",
     "angular-mocks": "~1.4.0",
-    "bootstrap-css-only": "~3.3.4",
     "angular-ui-router": "~0.2.15",
     "angular-local-storage": "~0.2.3",
-    "lodash": "~3.10.1"
+    "lodash": "~3.10.1",
+    "susy": "~2.2.6",
+    "skeleton": "skeleton-css#~2.0.4"
   }
 }

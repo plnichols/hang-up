@@ -10,15 +10,25 @@
 
 
     // Define routing
-    .config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
+    .config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function ($stateProvider, $urlRouterProvider, $locationProvider) {
+        $locationProvider.html5Mode(true);
         $urlRouterProvider.otherwise("/");
 
         $stateProvider
             .state('main', {
                 url: '/',
-                templateUrl: 'components/main/main.html',
-                controller: 'mainCtrl',
-                controllerAs: 'main'
+                views: {
+                    'add': {
+                        templateUrl: 'components/add/add.html',
+                        controller: 'addCtrl',
+                        controllerAs: 'add'
+                    },
+                    'list': {
+                        templateUrl: 'components/main/main.html',
+                        controller: 'mainCtrl',
+                        controllerAs: 'main'
+                    }
+                }
             })
             .state('main.edit', {
                 url: 'edit/:id',

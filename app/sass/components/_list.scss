@@ -1,0 +1,12 @@
+.list {
+    
+}
+
+.list__inner {
+    @include container;
+    padding: 30px;
+
+    @include breakpoint('small') {
+        max-width: 80%;
+    }
+}

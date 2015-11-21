@@ -1,5 +1,17 @@
-@import 'base';
-@import 'nav';
-@import 'note';
-@import 'date-label';
-@import 'side-panel';
+@import '../bower_components/susy/sass/susy';
+
+@import 'utilities/variables';
+@import 'utilities/mixins';
+
+@import 'core/base';
+@import 'core/forms';
+
+@import 'components/nav';
+@import 'components/footer';
+@import 'components/hero';
+@import 'components/note';
+@import 'components/list';
+@import 'components/add-note';
+@import 'components/date-label';
+@import 'components/side-panel';
+@import 'components/browse-happy';

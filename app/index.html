@@ -8,9 +8,28 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Notes App</title>
   <meta name="description" content="">
+  <meta name="author" content="">
+  <base href="/app/" />
+
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="bower_components/bootstrap-css-only/css/bootstrap.min.css">
+
+  <!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="stylesheet" href="bower_components/skeleton/css/normalize.css">
+  <link rel="stylesheet" href="bower_components/skeleton/css/skeleton.css">
   <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="images/favicon.png">
 </head>
 <body>
 
@@ -18,20 +37,34 @@
         <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <div class="container-fluid">
+    <nav class="nav">
+      <ul class="nav__list">
+        <!-- <li class="nav__item"><a class="nav__link" ui-sref="main">Home</a></li>
+        <li class="nav__item"><a class="nav__link" ui-sref="main.add">Add Note</a></li> -->
+      </ul>
+    </nav>
 
-      <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container-fluid">
-          <ul class="nav navbar-nav">
-            <li><a ui-sref="main">Home</a></li>
-            <li><a ui-sref="main.add">Add Note</a></li>
-          </ul>
-        </div>
-      </nav>
-
-      <div ui-view></div>
-
+    <div class="hero">
+      <div class="hero__inner">
+        <h1 class="hero__title">Forget Post It<sup>&reg;</sup>.</h1>
+        <h2 class="hero__subtitle">Scribble your notes somewhere safe!</h2>
+        <h5 class="hero__desc">Now you can find the name of that recruiter who called 3 months ago and the rate he promised... And it's free!</h5>
+        <div ui-view="add"></div>
+      </div>
     </div>
+
+    <div class="list">
+      <div class="list__inner">
+        <div ui-view="list"></div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="footer__inner">
+        Copyright &copy; 2015 Bionic Beetle Ltd - All rights reserved.
+      </div>
+    </footer>
+
 
     <!-- In production use:
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>

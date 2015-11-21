@@ -1,31 +1,19 @@
-<div class="row">
-	<div class="container-fluid">
-		<div class="col-xs-6 col-sm-8 col-md-9">
-			<div class="row">
-				<div class="note" ng-repeat="note in main.notes" class="col-sm-12 col-md-6">
-					<div class="note__inner well well-sm">
-						<div class="date-label">
-							<span class="date-label__month">{{note.timestamp | date:"MMM"}}</span>
-							<span class="date-label__day">{{note.timestamp | date:"dd"}}</span>
-							<span class="date-label__year">{{note.timestamp | date:"yyyy"}}</span>
-						</div>
-						<div class="note__company" ng-if="note.company">{{note.company}}</div>
-						<div class="note__recruiter" ng-if="note.recruiter">{{note.recruiter}}</div>
-						<div class="note__email" ng-if="note.email"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> <a href="mailto:{{note.email}}">{{note.email}}</a></div>
-						<div class="note__phone" ng-if="note.phone"><span class="glyphicon glyphicon-phone" aria-hidden="true"></span> {{note.phone}}</div>
-						<div class="note__description" ng-if="note.description"> <span class="glyphicon glyphicon-tags" aria-hidden="true"></span> {{note.description}}</div>
-						<div class="note__id">{{note.id}}</div>
-						<div class="note__cta btn-group">
-							<button class="btn btn-default btn-sm" ng-click="main.edit(note.id)" ui-sref="main.edit({id:note.id})">Edit</button>
-							<button class="btn btn-danger btn-sm" ng-click="main.delete(note.id)">Delete</button>
-						</div>
-					</div>
-				</div>
-			</div>
+<div class="note" ng-repeat="note in main.notes">
+	<div class="note__inner">
+		<div class="date-label">
+			<span class="date-label__month">{{note.timestamp | date:"MMM"}}</span>
+			<span class="date-label__day">{{note.timestamp | date:"dd"}}</span>
+			<span class="date-label__year">{{note.timestamp | date:"yyyy"}}</span>
 		</div>
-
-		<div class="side-panel col-xs-6 col-sm-4 col-md-3">
-			<div ui-view></div>
+		<div class="note__company" ng-if="note.company">{{note.company}}</div>
+		<div class="note__recruiter" ng-if="note.recruiter">{{note.recruiter}}</div>
+		<div class="note__email" ng-if="note.email"><i class="fa fa-envelope-o" aria-hidden="true"></i> <a href="mailto:{{note.email}}">{{note.email}}</a></div>
+		<div class="note__phone" ng-if="note.phone"><i class="fa fa-mobile" aria-hidden="true"></i> {{note.phone}}</div>
+		<div class="note__description" ng-if="note.description"> <i class="fa fa-tags" aria-hidden="true"></i> {{note.description}}</div>
+		<div class="note__id">{{note.id}}</div>
+		<div class="note__cta">
+			<i class="fa fa-pencil" ng-click="main.edit(note.id)" ui-sref="main.edit({id:note.id})"></i>
+			<i class="fa fa-trash-o" ng-click="main.delete(note.id)"></i>
 		</div>
 	</div>
 </div>

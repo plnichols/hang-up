@@ -1,0 +1,39 @@
+.hero {
+    margin-bottom: $base-padding;
+    background: #444 url(../img/bg2.jpg) no-repeat center center;
+    background-size: cover;
+}
+
+.hero__inner {
+    @include container;
+    padding: 30px;
+    text-align: center;
+
+    @include breakpoint('small') {
+        max-width: 80%;
+    }
+}
+
+.hero__title {
+    color: #eee;
+    font-weight: 600;
+    font-size: 4rem;
+    margin: 3rem 0 1rem;
+
+    @include breakpoint('medium') {
+        font-size: 5rem;
+    }
+}
+
+.hero__subtitle {
+    color: #eee;
+}
+
+.hero__desc {
+    color: #ccc;
+    margin-bottom: 6rem;
+
+    @include breakpoint('medium') {
+        font-size: 2rem;
+    }
+}

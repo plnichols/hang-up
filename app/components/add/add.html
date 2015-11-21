@@ -1,35 +1,58 @@
-<div class="well">
-    <h3>Add note</h3>
-    <h5>Enter details of new note</h5>
-    <form>
+<form class="add-note form">
+    <fieldset class="add-note__group">
+        <legend>Recruiter contact details</legend>
         <div class="form-group">
-            <input type="text" class="form-control" ng-model="add.note.company" placeholder="Company" autocomplete="off">
+            <label class="form-label" for="noteName">Name</label>
+            <input class="form-input" type="text" id="noteName" ng-model="add.note.recruiter" placeholder="Alistair Wright" autocomplete="off">
         </div>
         <div class="form-group">
-            <input type="text" class="form-control" ng-model="add.note.recruiter" placeholder="Recruiter name" autocomplete="off">
+            <label class="form-label" for="noteCompany">Company</label>
+            <input class="form-input" type="text" id="noteCompany" ng-model="add.note.company" placeholder="AW Recruitment Consultants" autocomplete="off">
         </div>
         <div class="form-group">
-            <input type="text" class="form-control" ng-model="add.note.email" placeholder="Email address" autocomplete="off">
+            <label class="form-label" for="noteEmail">Email</label>
+            <input class="form-input" type="text" id="noteEmail" ng-model="add.note.email" placeholder="alistair@awrecruitmentconsultants.co.uk" autocomplete="off"> 
         </div>
         <div class="form-group">
-            <input type="text" class="form-control" ng-model="add.note.phone" placeholder="Phone number" autocomplete="off">
+            <label class="form-label" for="notePhone">Phone</label>
+            <input class="form-input" type="text" id="notePhone" ng-model="add.note.phone" placeholder="0207 000 000" autocomplete="off">
+        </div>
+    </fieldset>
+
+    <fieldset class="add-note__group">
+        <legend>Role details</legend>
+        <div class="form-group">
+            <label class="form-label" for="noteTitle">Title</label>
+            <input class="form-input" type="text" id="noteTitle" ng-model="add.note.title" placeholder="Front End Developer" autocomplete="off">
         </div>
         <div class="form-group">
-            <textarea class="form-control" ng-model="add.note.description" placeholder="Description, tags, etc..." autocomplete="off"></textarea>
+            <label class="form-label" for="noteDescription">Description</label>
+            <textarea class="form-input" id="noteDescription" ng-model="add.note.description" placeholder="Description, tags, etc..." autocomplete="off"></textarea>
         </div>
-        <div class="form-group">
-            <div class="row">
-                <div class="col-xs-6">
-                    <input type="text" class="form-control" ng-model="add.note.rate" placeholder="Day rate" autocomplete="off">
+
+        <div class="row">
+            <div class="five columns">
+                <div class="form-group">
+                    <label class="form-label" for="noteRate">Rate</label>
+                    <input class="form-input" type="text" id="noteRate" ng-model="add.note.rate" placeholder="500" autocomplete="off">
                 </div>
-                <div class="col-xs-6">
-                    <input type="text" class="form-control" ng-model="add.note.start" placeholder="Start date" autocomplete="off">
-                </div>
+            </div>
+            <div class="seven columns">
+                <select class="form-input" name="" id="noteRateBasis" ng-model="add.note.rateBasis">
+                    <option value="">---Please select---</option>
+                    <option value="day">day</option>
+                    <option value="hour">hour</option>
+                    <option value="week">week</option>
+                    <option value="other">other</option>
+                </select>
             </div>
         </div>
         <div class="form-group">
-            <button class="btn btn-success btn-sm" ng-click="add.addNote()">Add new note</button>
-            <button class="btn btn-default btn-sm" ui-sref="main">Cancel</button>
+            <label class="form-label" for="noteStartDate">Start date</label>
+            <input class="form-input" type="text" id="noteStartDate" ng-model="add.note.start" placeholder="Start date" autocomplete="off">
         </div>
-    </form>
-</div>
+
+    </fieldset>
+
+    <button class="add-note__submit button button-primary" ng-click="add.addNote()">Add note</button>
+</form>

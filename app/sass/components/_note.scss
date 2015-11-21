@@ -1,0 +1,86 @@
+.note {
+	margin: 20px 0;
+	font-size: 12px;
+	border: 1px solid $border-light;	
+	background: #fbfbfb;
+	border-radius: $base-radius;
+}
+
+.note__inner {
+	position: relative;
+	padding: 10px 10px 10px 60px;
+	min-height: 68px;
+
+	i {
+		position: relative;
+		top: 1px;
+		padding-right: 4px;
+		color: #666;
+	}
+}
+
+.note__company {
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.note__recruiter {
+	margin-bottom: 6px;
+}
+
+.note__email {
+	margin-bottom: 1px;
+}
+
+.note__phone {
+	margin-bottom: 4px;
+
+	i {
+		top: 2px;
+		&:before {
+			font-size: 18px;
+		}
+	}
+}
+
+.note__description {
+	line-height: 1.2;
+	margin: 3px 0;
+}
+
+.note__id {
+	position: absolute;
+	top: 0;
+	right: 0;
+	padding: 3px 5px;
+	font-size: 10px;
+	color: #ccc;
+	opacity: 0;
+	transition: $base-transition;
+
+	.note:hover & {
+		opacity: 1;
+	}
+}
+
+.note__cta {
+	position: absolute;
+	bottom: 0;
+	right: 7px;
+	opacity: 0;
+	transition: $base-transition;
+
+	.note:hover & {
+		opacity: 1;
+	}
+
+	i {
+		font-size: 16px;
+		padding: 10px 5px;
+		cursor: pointer;
+
+		&:hover {
+			color: #222;
+		}
+	}
+}
