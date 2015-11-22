@@ -152,7 +152,6 @@ input[type="button"] {
   color: #666; }
 
 .hero {
-  margin-bottom: 30px;
   background: #444 url(../img/bg2.jpg) no-repeat center center;
   background-size: cover; }
 
@@ -160,7 +159,7 @@ input[type="button"] {
   max-width: 100%;
   margin-left: auto;
   margin-right: auto;
-  padding: 30px;
+  padding: 60px 30px;
   text-align: center; }
   .hero__inner:after {
     content: " ";
@@ -174,7 +173,7 @@ input[type="button"] {
   color: #eee;
   font-weight: 600;
   font-size: 4rem;
-  margin: 3rem 0 1rem; }
+  margin-bottom: 1rem; }
   @media (min-width: 750px) {
     .hero__title {
       font-size: 5rem; } }
@@ -184,7 +183,8 @@ input[type="button"] {
 
 .hero__desc {
   color: #ccc;
-  margin-bottom: 6rem; }
+  margin-bottom: 6rem;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5), 0px 0px 20px rgba(0, 0, 0, 0.25), 0px 0px 40px rgba(0, 0, 0, 0.25); }
   @media (min-width: 750px) {
     .hero__desc {
       font-size: 2rem; } }
@@ -269,7 +269,7 @@ input[type="button"] {
 
 .add-note {
   max-width: 500px;
-  margin: 40px auto -50px;
+  margin: 40px auto 0;
   padding: 30px;
   border: 1px solid #e1e1e1;
   border-radius: 10px;
