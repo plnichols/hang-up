@@ -29,19 +29,7 @@
                         controllerAs: 'main'
                     }
                 }
-            })
-            .state('main.edit', {
-                url: 'edit/:id',
-                templateUrl: 'components/edit/edit.html',
-                controller: 'editCtrl',
-                controllerAs: 'edit'
-            })
-            .state('main.add', {
-                url: 'add/',
-                templateUrl: 'components/add/add.html',
-                controller: 'addCtrl',
-                controllerAs: 'add'
-            })
+            });
     }])
 
     // Local storage settings
@@ -50,16 +38,7 @@
             .setStorageCookie(0, '/')
             .setStorageCookieDomain('')
             .setNotify(true, true);
-    }])
-
-    // Define config and constant
-    // .constant('CONSTANT', {
-    //     config: {
-    //         firebase: {
-    //             url: "https://INSERT-YOUR-ACCOUNT-DOMAIN.firebaseio.com/"
-    //         }
-    //     }
-    // })
+    }]);
 
 })();
 

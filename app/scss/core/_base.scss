@@ -1,0 +1,25 @@
+html {
+	box-sizing: border-box;
+}
+
+*, 
+*:before, 
+*:after {
+  	box-sizing: inherit;
+}
+
+body {
+	background: $bg-color;
+}
+
+a {
+	color: $primary-text-color;
+	text-decoration: underline;
+	transition: $base-transition;
+
+	&:hover,
+	&:active {
+		color: $secondary-text-color;
+	}
+}
+

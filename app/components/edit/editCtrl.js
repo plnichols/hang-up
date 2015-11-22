@@ -6,6 +6,7 @@
         .controller('editCtrl', ['$log', '$rootScope', '$stateParams', 'notesService', editCtrl]);
 
     function editCtrl($log, $rootScope, $stateParams, notesService) {
+        /*jshint validthis: true */
         var vm = this;
 
         vm.note = {};

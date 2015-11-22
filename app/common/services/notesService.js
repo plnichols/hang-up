@@ -12,7 +12,7 @@
 			getNote: getNote,
 			deleteNote: deleteNote,
 			getAllNotes: getAllNotes
-		}
+		};
 
 
 		function uniqueId(string) {

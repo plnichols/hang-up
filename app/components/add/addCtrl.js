@@ -6,6 +6,7 @@
         .controller('addCtrl', ['$log', '$rootScope', 'notesService', addCtrl]);
 
     function addCtrl($log, $rootScope, notesService) {
+        /*jshint validthis: true */
         var vm = this;
 
         vm.note = {};

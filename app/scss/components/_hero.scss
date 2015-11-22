@@ -1,0 +1,39 @@
+.hero {
+    background: #19352B url(../img/bg-2400.jpg) no-repeat center center;
+    background-size: cover;
+}
+
+.hero__inner {
+    margin: 0 auto;
+    padding: ($base-padding * 2) $base-padding;
+    text-align: center;
+
+    @include breakpoint('small') {
+        max-width: 80%;
+    }
+}
+
+.hero__title {
+    color: #eee;
+    font-weight: 600;
+    font-size: 4rem;
+    margin-bottom: 1rem;
+
+    @include breakpoint('medium') {
+        font-size: 5rem;
+    }
+}
+
+.hero__subtitle {
+    color: #eee;
+}
+
+.hero__desc {
+    color: #ccc;
+    margin-bottom: 6rem;
+    text-shadow: 1px 1px 5px rgba(0,0,0,0.5), 0px 0px 20px rgba(0,0,0,0.25), 0px 0px 40px rgba(0,0,0,0.25);
+
+    @include breakpoint('medium') {
+        font-size: 2rem;
+    }
+}

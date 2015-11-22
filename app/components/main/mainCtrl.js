@@ -6,6 +6,7 @@
         .controller('mainCtrl', ['$rootScope', '$log', 'notesService', mainCtrl]);
 
     function mainCtrl($rootScope, $log, notesService) {
+        /*jshint validthis: true */
         var vm = this;
 
         vm.notes = {};
