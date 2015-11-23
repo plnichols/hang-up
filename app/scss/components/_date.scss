@@ -1,0 +1,27 @@
+.date {
+	text-align: center;
+	line-height: 1;
+
+	> span {
+		display: block;
+	}
+}
+
+.date__month {
+	font-size: 11px;
+	color: #bfbfbf;
+	text-transform: uppercase;
+}
+
+.date__day {
+	font-size: 24px;
+	font-weight: bold;
+	line-height: 0.9;
+	color: #fff;
+}
+
+.date__year {
+	font-size: 10px;
+	color: #aaa;
+	line-height: 1.3;
+}

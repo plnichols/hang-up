@@ -1,5 +1,5 @@
-<div class="note" ng-repeat="note in list.notes">
-	<div class="note__inner">
-        <div note-item note="note" delete="list.deleteNote(str)"></div>
-	</div>
-</div>
+<table class="note">
+	<tbody>
+        <tr class="note__item" note-item note="note" delete="list.deleteNote(str)" ng-repeat="note in list.notes"></tr>
+	</tbody>
+</table>

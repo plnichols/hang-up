@@ -1,12 +1,4 @@
 .list {
-    
+    margin: 0;
 }
 
-.list__inner {
-    margin: 0 auto;
-    padding: 30px;
-
-    @include breakpoint('small') {
-        max-width: 80%;
-    }
-}

@@ -1,86 +1,75 @@
 .note {
-	margin: 20px 0;
-	font-size: 12px;
-	border: 1px solid $border-light;	
-	background: #fbfbfb;
-	border-radius: $base-radius;
+    width: 100%;
+    margin: 0;
+    font-size: 14px;
 }
 
-.note__inner {
-	position: relative;
-	padding: 10px 10px 10px 60px;
-	min-height: 68px;
+.note__item {
+    background-color: $bg-color;
+    
+    &:hover {
+        background-color: lighten($bg-color, 10%);
+    }
+}
 
-	i {
-		position: relative;
-		top: 1px;
-		padding-right: 4px;
-		color: #666;
-	}
+.note__cell {
+    padding: 10px;
+    line-height: 1.3;
+    border-bottom: 1px solid $border-light; 
+
+    i {
+        padding-right: 4px;
+        vertical-align: middle;
+    }
+}
+
+.note__date {
+    width: 1%;
+    padding: 10px 20px;
+    background-color: #777;
+    border-bottom-color: #888;
+    white-space: nowrap;
+
+    .note__item:hover & {
+        background-color: #666;
+    }
 }
 
 .note__company {
-	font-size: 16px;
-	font-weight: bold;
-}
-
-.note__recruiter {
-	margin-bottom: 6px;
+    font-weight: bold;
 }
 
 .note__email {
-	margin-bottom: 1px;
+    white-space: nowrap;
+    
+    &:not(:last-child) {
+        margin-bottom: 5px;
+    }
 }
 
 .note__phone {
-	margin-bottom: 4px;
+    white-space: nowrap;
 
-	i {
-		top: 2px;
-		&:before {
-			font-size: 18px;
-		}
-	}
+    i:before {
+        font-size: 20px;
+    }
 }
 
 .note__description {
-	line-height: 1.2;
-	margin: 3px 0;
-}
-
-.note__id {
-	position: absolute;
-	top: 0;
-	right: 0;
-	padding: 3px 5px;
-	font-size: 10px;
-	color: #ccc;
-	opacity: 0;
-	transition: $base-transition;
-
-	.note:hover & {
-		opacity: 1;
-	}
+    width: 40%;
 }
 
 .note__cta {
-	position: absolute;
-	bottom: 0;
-	right: 7px;
-	opacity: 0;
-	transition: $base-transition;
+    width: 1%;
+    white-space: nowrap;
 
-	.note:hover & {
-		opacity: 1;
-	}
+    i {
+        font-size: 16px;
+        padding: 10px 5px;
+        cursor: pointer;
 
-	i {
-		font-size: 16px;
-		padding: 10px 5px;
-		cursor: pointer;
-
-		&:hover {
-			color: #222;
-		}
-	}
+        &:hover {
+            color: #222;
+        }
+    }
 }

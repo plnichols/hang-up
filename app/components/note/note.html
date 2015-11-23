@@ -1,18 +1,20 @@
-<div class="date-label">
-	<span class="date-label__month">{{vm.note.timestamp | date:"MMM"}}</span>
-	<span class="date-label__day">{{vm.note.timestamp | date:"dd"}}</span>
-	<span class="date-label__year">{{vm.note.timestamp | date:"yyyy"}}</span>
-</div>
+<td class="note__cell note__date">
+    <div class="date">
+        <span class="date__month">{{vm.note.timestamp | date:"MMM"}}</span>
+        <span class="date__day">{{vm.note.timestamp | date:"dd"}}</span>
+        <span class="date__year">{{vm.note.timestamp | date:"yyyy"}}</span>
+    </div>
+</td>
 
-<div>[{{vm.note.timestamp}}] [{{vm.status}}]</div>
-<div class="note__company" ng-if="vm.note.company">{{vm.note.company}}</div>
-<div class="note__recruiter" ng-if="vm.note.recruiter">{{vm.note.recruiter}}</div>
-<div class="note__email" ng-if="vm.note.email"><i class="fa fa-envelope-o" aria-hidden="true"></i> <a href="mailto:{{vm.note.email}}">{{vm.note.email}}</a></div>
-<div class="note__phone" ng-if="vm.note.phone"><i class="fa fa-mobile" aria-hidden="true"></i> {{vm.note.phone}}</div>
-<div class="note__description" ng-if="vm.note.description"> <i class="fa fa-tags" aria-hidden="true"></i> {{vm.note.description}}</div>
-<div class="note__id">{{vm.note.id}}</div>
+<td class="note__cell note__company">{{vm.note.company}}</td>
+<td class="note__cell note__recruiter">{{vm.note.recruiter}}</td>
+<td class="note__cell note__contact">
+    <div class="note__email" ng-if="vm.note.email"><i class="fa fa-envelope-o" aria-hidden="true"></i> <a href="mailto:{{vm.note.email}}">{{vm.note.email}}</a></div>
+    <div class="note__phone" ng-if="vm.note.phone"><i class="fa fa-mobile" aria-hidden="true"></i> <a href="tel:{{vm.note.phone}}">{{vm.note.phone}}</a></div>
+</td>
+<td class="note__cell note__description">{{vm.note.description}}</td>
 
-<div class="note__cta">
-	<i class="fa fa-pencil" ng-click="vm.edit()"></i>
-	<i class="fa fa-trash-o" ng-click="vm.delete({str:vm.note.id})"></i>
-</div>
+<td class="note__cell note__cta">
+    <i class="fa fa-pencil" ng-click="vm.edit()"></i>
+    <i class="fa fa-trash-o" ng-click="vm.delete({str:vm.note.id})"></i>
+</td>
