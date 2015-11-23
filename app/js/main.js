@@ -20,13 +20,13 @@
                 views: {
                     'add': {
                         templateUrl: 'components/add/add.html',
-                        controller: 'addCtrl',
+                        controller: 'addController',
                         controllerAs: 'add'
                     },
                     'list': {
-                        templateUrl: 'components/main/main.html',
-                        controller: 'mainCtrl',
-                        controllerAs: 'main'
+                        templateUrl: 'components/list/list.html',
+                        controller: 'listController',
+                        controllerAs: 'list'
                     }
                 }
             });
@@ -95,9 +95,12 @@
 		function deleteNote(id) {
 			var data = localStorageService.get('notes') || [],
 				noteIndex = findNoteIndex(id),
+				deleted = null;
+
+			if (noteIndex > 0) {
 				deleted = data.splice(noteIndex, 1);
-				
-			localStorageService.set('notes', data);
+				localStorageService.set('notes', data);
+			}
 
 			return deleted;
 		}
@@ -135,9 +138,9 @@
     'use strict';
 
     angular.module('app')
-        .controller('addCtrl', ['$log', '$rootScope', 'notesService', addCtrl]);
+        .controller('addController', ['$log', '$rootScope', 'notesService', addController]);
 
-    function addCtrl($log, $rootScope, notesService) {
+    function addController($log, $rootScope, notesService) {
         /*jshint validthis: true */
         var vm = this;
 
@@ -151,9 +154,57 @@
         function addNote() {
             var data = notesService.addNote(vm.note);
             
-            $log.debug('[addCtrl] Success: note added', data);
+            $log.debug('[addController] Success: note added', data);
             $rootScope.$broadcast('notesUpdated');
             vm.note = {};
+        }
+    }
+
+})();
+(function(){
+    
+    'use strict';
+
+    angular.module('app')
+        .controller('listController', ['$rootScope', '$log', 'notesService', listController]);
+
+    function listController($rootScope, $log, notesService) {
+        /*jshint validthis: true */
+        var vm = this;
+
+        vm.notes = {};
+
+        vm.deleteNote = function(id) {
+            var data = notesService.deleteNote(id);
+
+            if (data) {
+                $log.debug('[listController] Success: Note deleted: ', data);
+            } else {
+                $log.debug('[listController] Error: Deletion failed');
+            }
+            
+            refreshList();
+        };
+
+        activate();
+
+        // refresh list after note has been added/edited
+        $rootScope.$on('notesUpdated', function(event) {
+            refreshList();
+        });
+
+
+        ///////////////////////////
+
+
+        function activate() {
+            vm.notes = notesService.getAllNotes();
+        }
+
+
+        function refreshList() {
+            vm.notes = notesService.getAllNotes();
+            $log.debug('[listController] Refresh list');
         }
     }
 
@@ -194,67 +245,33 @@
     }
 
 })();
-(function(){
-    
-    'use strict';
-
-    angular.module('app')
-        .controller('mainCtrl', ['$rootScope', '$log', 'notesService', mainCtrl]);
-
-    function mainCtrl($rootScope, $log, notesService) {
-        /*jshint validthis: true */
-        var vm = this;
-
-        vm.notes = {};
-
-        vm.delete = function(timestamp) {
-            var data = notesService.deleteNote(timestamp);
-
-            $log.debug('[mainCtrl] Success: Note deleted: ', data);
-            refreshList();
-        };
-
-        // get list of notes
-        activate();
-
-        // refresh list after note has been added/edited
-        $rootScope.$on('notesUpdated', function(event) {
-            refreshList();
-        });
-
-
-        ///////////////////////////
-
-
-        function activate() {
-            vm.notes = notesService.getAllNotes();
-        }
-
-
-        function refreshList() {
-            vm.notes = notesService.getAllNotes();
-            $log.debug('[mainCtrl] Refresh list');
-        }
-    }
-
-})();
 (function() {
     
     'use strict';
 
     angular.module('app')
-        .directive('note', ['$log', 'notesService', note]);
+        .directive('noteItem', ['notesService', noteItemDirective]);
 
-    function note($log, notesService) {
+    function noteItemDirective(notesService) {
         return {
-            link: link,
+            restrict: 'EA',
             templateUrl: 'components/note/note.html',
-            restrict: 'EA'
+            scope: {},
+            controller: NoteController,
+            controllerAs: 'vm',
+            bindToController: {
+                note: '=',
+                delete: '&'
+            }
         };
+    }
 
-        function link(scope, element, attrs) {
-          console.log('directive');
-        }
+    function NoteController() {
+        var vm = this;
+
+        vm.edit = function() {
+            vm.status = 'edit mode';
+        };
     }
 
 })();

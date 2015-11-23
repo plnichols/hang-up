@@ -3,22 +3,26 @@
     'use strict';
 
     angular.module('app')
-        .controller('mainCtrl', ['$rootScope', '$log', 'notesService', mainCtrl]);
+        .controller('listController', ['$rootScope', '$log', 'notesService', listController]);
 
-    function mainCtrl($rootScope, $log, notesService) {
+    function listController($rootScope, $log, notesService) {
         /*jshint validthis: true */
         var vm = this;
 
         vm.notes = {};
 
-        vm.delete = function(timestamp) {
-            var data = notesService.deleteNote(timestamp);
+        vm.deleteNote = function(id) {
+            var data = notesService.deleteNote(id);
 
-            $log.debug('[mainCtrl] Success: Note deleted: ', data);
+            if (data) {
+                $log.debug('[listController] Success: Note deleted: ', data);
+            } else {
+                $log.debug('[listController] Error: Deletion failed');
+            }
+            
             refreshList();
         };
 
-        // get list of notes
         activate();
 
         // refresh list after note has been added/edited
@@ -37,7 +41,7 @@
 
         function refreshList() {
             vm.notes = notesService.getAllNotes();
-            $log.debug('[mainCtrl] Refresh list');
+            $log.debug('[listController] Refresh list');
         }
     }
 

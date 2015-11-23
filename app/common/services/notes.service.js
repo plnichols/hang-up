@@ -50,9 +50,12 @@
 		function deleteNote(id) {
 			var data = localStorageService.get('notes') || [],
 				noteIndex = findNoteIndex(id),
+				deleted = null;
+
+			if (noteIndex > 0) {
 				deleted = data.splice(noteIndex, 1);
-				
-			localStorageService.set('notes', data);
+				localStorageService.set('notes', data);
+			}
 
 			return deleted;
 		}

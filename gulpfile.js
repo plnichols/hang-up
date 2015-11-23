@@ -11,13 +11,15 @@ var jshint = require('gulp-jshint');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
+var notify = require("gulp-notify");
 
 
 // Lint Task
 gulp.task('lint', function() {
     return gulp.src(['app/**/*.js', '!app/bower_components/**/*', '!**/js/main*'])
         .pipe(jshint())
-        .pipe(jshint.reporter('jshint-stylish'));
+        .pipe(jshint.reporter('jshint-stylish'))
+        .pipe(notify({onLast:true, message:'JShint done!'}));
 });
 
 // Compile Sass
@@ -28,17 +30,19 @@ gulp.task('sass', function() {
         .pipe(sourcemaps.write())
         .pipe(rename('main.min.css'))
         .pipe(autoprefixer({ browsers: ['last 2 versions', '> 5%', 'Firefox ESR'] }))
-        .pipe(gulp.dest('app/css'));
+        .pipe(gulp.dest('app/css'))
+        .pipe(notify({onLast:true, message:'Sass done!'}));
 });
 
 // Concatenate & Minify JS
 gulp.task('scripts', function() {
-    return gulp.src(['app/**/*.js', '!app/bower_components/**/*', '!**/*_test.*', '!**/js/main*'])
+    return gulp.src(['app/**/*.js', '!app/bower_components/**/*', '!**/*.test.*', '!**/js/main*'])
         .pipe(concat('main.js'))
         .pipe(gulp.dest('app/js'))
         .pipe(rename('main.min.js'))
         .pipe(uglify())
-        .pipe(gulp.dest('app/js'));
+        .pipe(gulp.dest('app/js'))
+        .pipe(notify({onLast:true, message:'Scripts done!'}));
 });
 
 // Watch Files For Changes

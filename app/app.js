@@ -20,13 +20,13 @@
                 views: {
                     'add': {
                         templateUrl: 'components/add/add.html',
-                        controller: 'addCtrl',
+                        controller: 'addController',
                         controllerAs: 'add'
                     },
                     'list': {
-                        templateUrl: 'components/main/main.html',
-                        controller: 'mainCtrl',
-                        controllerAs: 'main'
+                        templateUrl: 'components/list/list.html',
+                        controller: 'listController',
+                        controllerAs: 'list'
                     }
                 }
             });

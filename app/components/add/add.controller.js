@@ -3,9 +3,9 @@
     'use strict';
 
     angular.module('app')
-        .controller('addCtrl', ['$log', '$rootScope', 'notesService', addCtrl]);
+        .controller('addController', ['$log', '$rootScope', 'notesService', addController]);
 
-    function addCtrl($log, $rootScope, notesService) {
+    function addController($log, $rootScope, notesService) {
         /*jshint validthis: true */
         var vm = this;
 
@@ -19,7 +19,7 @@
         function addNote() {
             var data = notesService.addNote(vm.note);
             
-            $log.debug('[addCtrl] Success: note added', data);
+            $log.debug('[addController] Success: note added', data);
             $rootScope.$broadcast('notesUpdated');
             vm.note = {};
         }
