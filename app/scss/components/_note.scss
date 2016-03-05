@@ -7,24 +7,33 @@
 .note__item {
     display: flex;
     line-height: 1.3;
-    border-bottom: 1px solid $border-light;
 }
 
 .note__sidebar {
     width: 15%;
-    padding: 3px 0 10px;
-    background-color: $dark-green;
+    padding: 3px 0 6px;
     transition: $base-transition;
+    background-color: $tercary-dark;
+    border-bottom: 1px solid $tercary-mid;
+
+    &:first-child { 
+        border-top: 1px solid $tercary-mid;
+    }
     
     .note__item:hover & {
-        background-color: lighten($dark-green, 10%);
+        background-color: $tercary-mid;
     }
 }
 
 .note__content {
     width: 85%;
-    background-color: $bg-color;
     transition: $base-transition;
+    background-color: $bg-color;
+    border-bottom: 1px solid darken($bg-color, 10%);
+
+    &:first-child {
+        border-top: 1px solid darken($bg-color, 10%);
+    }
     
     .note__item:hover & {
         background-color: lighten($bg-color, 10%);
@@ -65,8 +74,8 @@
 
     i {
         font-size: 16px;
-        padding: 10px 15px;
-        color: #ccc;
+        padding: 8px 16px;
+        color: $tercary-light;
         cursor: pointer;
 
         &:hover {

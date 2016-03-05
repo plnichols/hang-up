@@ -1,4 +1,4 @@
-<div class="note__sidebar two columns">
+<div class="note__sidebar">
     <div class="date">
         <span class="date__month">{{vm.note.timestamp | date:"MMM"}}</span>
         <span class="date__day">{{vm.note.timestamp | date:"dd"}}</span>
@@ -11,7 +11,7 @@
     </div>
 </div>
 
-<div class="note__content ten columns">
+<div class="note__content">
     <div class="note__company">{{vm.note.company}}</div>
     <div class="note__recruiter">{{vm.note.recruiter}}</div>
     <div class="note__email" ng-if="vm.note.email">

@@ -12,7 +12,7 @@
 
 .date__month {
 	font-size: 11px;
-	color: #bfbfbf;
+	color: desaturate(darken($tercary-vlight, 25%), 10%);
 	text-transform: uppercase;
 }
 
@@ -25,6 +25,6 @@
 
 .date__year {
 	font-size: 10px;
-	color: #aaa;
+	color: $tercary-light;
 	line-height: 1.3;
 }

@@ -23,13 +23,27 @@ $panel-color: #f3f3f3;
 $primary-text-color: #444;
 $secondary-text-color: #999;
 $primary-color: #09A696;
-$secondary-color: #287B73;
-$tercary-color: #26615B;
 $warning-color: #f44;
 $info-color: #fc3;
 $success-color: #85C346;
 
-$dark-green: #203331;
+// Primary
+$primary-dark: #222;
+$primary-mid: #666;
+$primary-light: #bbb;
+$primary-vlight: #eee;
+
+// Secondary
+$secondary-dark: #203331;
+$secondary-mid: #385a56;
+$secondary-light: #609a94;
+$secondary-vlight: #c0f0dd;
+
+// Tercary
+$tercary-dark: #152136;
+$tercary-mid: #21325e;
+$tercary-light: #6480c9;
+$tercary-vlight: #c3d9f0;
 
 // Borders
 $border: #ccc;
