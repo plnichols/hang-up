@@ -8,3 +8,6 @@ tmp
 
 **/main.js
 **/main.min.js
+
+**/app/css
+**/main.min.css
