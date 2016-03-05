@@ -29,6 +29,7 @@
                         controllerAs: 'list'
                     },
                     'footer': {
+                        templateUrl: 'components/footer/footer.html',
                         controller: 'footerController',
                         controllerAs: 'footer'
                     }
