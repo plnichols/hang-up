@@ -1,20 +1,24 @@
-<td class="note__cell note__date">
+<div class="note__sidebar two columns">
     <div class="date">
         <span class="date__month">{{vm.note.timestamp | date:"MMM"}}</span>
         <span class="date__day">{{vm.note.timestamp | date:"dd"}}</span>
         <span class="date__year">{{vm.note.timestamp | date:"yyyy"}}</span>
     </div>
-</td>
 
-<td class="note__cell note__company">{{vm.note.company}}</td>
-<td class="note__cell note__recruiter">{{vm.note.recruiter}}</td>
-<td class="note__cell note__contact">
-    <div class="note__email" ng-if="vm.note.email"><i class="fa fa-envelope-o" aria-hidden="true"></i> <a href="mailto:{{vm.note.email}}">{{vm.note.email}}</a></div>
-    <div class="note__phone" ng-if="vm.note.phone"><i class="fa fa-mobile" aria-hidden="true"></i> <a href="tel:{{vm.note.phone}}">{{vm.note.phone}}</a></div>
-</td>
-<td class="note__cell note__description">{{vm.note.description}}</td>
+    <div class="note__cta">
+        <i class="fa fa-pencil" ng-click="vm.edit()"></i>
+        <i class="fa fa-trash-o" ng-click="vm.delete({str:vm.note.id})"></i>
+    </div>
+</div>
 
-<td class="note__cell note__cta">
-    <i class="fa fa-pencil" ng-click="vm.edit()"></i>
-    <i class="fa fa-trash-o" ng-click="vm.delete({str:vm.note.id})"></i>
-</td>
+<div class="note__content ten columns">
+    <div class="note__company">{{vm.note.company}}</div>
+    <div class="note__recruiter">{{vm.note.recruiter}}</div>
+    <div class="note__email" ng-if="vm.note.email">
+        <i class="fa fa-envelope-o" aria-hidden="true"></i> <a href="mailto:{{vm.note.email}}">{{vm.note.email}}</a>
+    </div>
+    <div class="note__phone" ng-if="vm.note.phone">
+        <i class="fa fa-mobile" aria-hidden="true"></i> <a href="tel:{{vm.note.phone}}">{{vm.note.phone}}</a>
+    </div>
+    <div class="note__description">{{vm.note.description}}</div>
+</div>
