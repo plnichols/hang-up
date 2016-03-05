@@ -1,8 +1,8 @@
 {
-  "name": "job-notes",
-  "description": "A job search notes tracking app",
-  "version": "0.0.0",
-  "repository": "https://github.com/plnichols/job-notes",
+  "name": "hang-up",
+  "description": "The only web app you'll need to save details of your calls",
+  "version": "0.0.1",
+  "repository": "https://github.com/plnichols/hang-up",
   "license": "MIT",
   "private": true,
   "dependencies": {
