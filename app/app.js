@@ -27,6 +27,10 @@
                         templateUrl: 'components/list/list.html',
                         controller: 'listController',
                         controllerAs: 'list'
+                    },
+                    'footer': {
+                        controller: 'footerController',
+                        controllerAs: 'footer'
                     }
                 }
             });

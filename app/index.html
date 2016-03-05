@@ -57,9 +57,9 @@
       <div ui-view="list"></div>
     </div>
 
-    <footer class="footer">
+    <footer class="footer" ui-view="footer">
       <div class="footer__inner">
-        Copyright &copy; 2016 Bionic Beetle Ltd - All rights reserved.
+        Copyright &copy; {{ footer.date | date:'yyyy' }} Bionic Beetle Ltd - All rights reserved.
       </div>
     </footer>
 
